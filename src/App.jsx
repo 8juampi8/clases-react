@@ -3,6 +3,7 @@ import NavBar from './components/navbar/NavBar'
 import ItemListContainer from './components/ItemListContainer/ItemListContainer'
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer"
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import EjemploContadorEventListener from './components/EjemploContadorEventListener'
 
 function App() {
 
@@ -19,6 +20,8 @@ function App() {
         </Routes>
 
       </BrowserRouter>
+
+      <EjemploContadorEventListener />
 
     </div>
   )
