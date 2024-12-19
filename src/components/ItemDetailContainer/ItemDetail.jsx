@@ -1,23 +1,23 @@
-import { useState } from "react"
 import "./itemdetail.css"
+import ItemCount from "../ItemCount/ItemCount"
+import { useContext } from "react"
+import { CartContext } from "../../context/CartContext"
 
 const ItemDetail = ({product}) => {
-  const [currentImg, setCurrentimg] = useState(product.img[0])
 
-  const images = product.img.filter((image) => image !== currentImg)
+  const {addProduct} = useContext(CartContext)
+
+  const addProductInCart = (count) => {
+    const productCart = {...product, quantity: count}
+
+    addProduct(productCart)
+  }
 
   return (
     <div className="item-detail">
         <div className="images-detail-container">
-            <div className="secondary-images">
-              {
-                images.map((image)=>(
-                  <img src={image} key={image} onClick={() => setCurrentimg(image)} />
-                ))
-              }
-            </div>
             <div className="main-image">
-                <img src={currentImg} alt="" />
+                <img src={product.img} alt="" />
             </div>
         </div>
 
@@ -26,8 +26,11 @@ const ItemDetail = ({product}) => {
             <p className="text-detail">{product.description}</p>
             <p className="text-detail">Precio: ${product.price}</p>
         </div>
+
+        <ItemCount addProductInCart={addProductInCart}/>
     </div>
   )
 }
 
 export default ItemDetail
+
