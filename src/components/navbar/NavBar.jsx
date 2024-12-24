@@ -8,6 +8,8 @@ const NavBar = () => {
 
   const {totalQuantity} = useContext(CartContext)
 
+  let quantity = totalQuantity()
+
   return (
     <nav>
         
@@ -22,7 +24,7 @@ const NavBar = () => {
         <p>{greeting}</p>
 
         <Link to={"/cart"}>
-          <p>Carrito:{totalQuantity()}</p>
+          <p>Carrito:{quantity !== 0 && quantity}</p>
         </Link>
       </ul>
     </nav>

@@ -9,26 +9,39 @@ const ItemListContainer = ({greeting}) => {
 
     const [products, setProducts] = useState([])
 
-    const {idCategory} = useParams()
-
-    useEffect(()=>{
-        getProducts()
-            .then((data)=>{{
-                if(idCategory){
-                    const filterProducts = data.filter((product)=>product.category === idCategory)
-                    setProducts(filterProducts)
-                }else{
-                    setProducts(data)
-                }
-            }})
-            .catch((error)=>{
-                console.error(error)
-            }
-            )
-            .finally(()=>{
-                console.log("termino la promesa")
-            })
-    }, [idCategory])
+    useEffect(()=> {
+        setProducts(
+            [
+                {
+                    id: "Grt223",
+                    name: "Remera Extreme",
+                    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate at, rem iste quia magnam assumenda. Consequatur voluptas beatae ex dolorum dolor sapiente, ipsa est nobis voluptate, odit odio harum quae.",
+                    price: 400,
+                    stock: 10,
+                    image: ["/img/remera-h.jpg", "/img/remera-h.jpg", "/img/remera-h.jpg"],
+                    category: "remeras"
+                  },
+                  {
+                    id: "Grt224",
+                    name: "Remera Fitz Roy",
+                    description: "",
+                    price: 420,
+                    stock: 4,
+                    image: ["/img/remera-m.jpg", "/img/remera-m.jpg", "/img/remera-m.jpg"],
+                    category: "remeras"
+                  },
+                  {
+                    id: "Hff556",
+                    name: "Pantalon Dorian",
+                    description: "",
+                    price: 820,
+                    stock: 5,
+                    image: ["/img/pantalon-h.jpg", "/img/pantalon-h.jpg", "/img/pantalon-h.jpg"],
+                    category: "pantalones"
+                  }
+            ]
+        )
+    }, [] )
 
     return(
         <div className="itemlistcontainer">

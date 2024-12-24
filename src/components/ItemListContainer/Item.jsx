@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom"
+import React from "react"
 
-const Item = ({product}) => {
+const Item = React.memo(({product}) => {
+
+    console.log("re-render de: ", product.name)
+
     return (
       <div>
           <div className="item">
@@ -11,7 +15,7 @@ const Item = ({product}) => {
           </div>
       </div>
     )
-  }
-  
-  export default Item
+}, (prevProps, nextProps) => JSON.stringify(prevProps) === JSON.stringify(nextProps))
+
+export default Item
   
